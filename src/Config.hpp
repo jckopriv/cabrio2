@@ -4,16 +4,13 @@
 #ifndef CABRIO_CONFIG_HPP_
 #define CABRIO_CONFIG_HPP_
 
-class Config {
+#include "Singleton.hpp"
+
+class Config : public Singleton<Config> {
   public:
-    static Config& get_instance() {
-      static Config instance;
-      return instance;
-    }
+
   private:
-    Config() {};
-    Config(Config const&);
-    void operator=(Config const&);
+
 };
 
 #endif
