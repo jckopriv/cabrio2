@@ -10,7 +10,3 @@ Renderer::Renderer() {
 Renderer::~Renderer() {
 
 }
-
-void Renderer::add_quad(Quad& q) {
-
-}

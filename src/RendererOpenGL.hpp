@@ -14,6 +14,7 @@ class RendererOpenGL : public Renderer {
     RendererOpenGL();
     ~RendererOpenGL();
     int init();
+    int draw_all();
   private:
     GLFWwindow* window;
 };

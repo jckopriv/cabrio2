@@ -31,7 +31,7 @@ Game& GameList::next() {
   currIter++;
 
   if(currIter == games_.end()){
-    currIter = games_.begin(); 
+    currIter = games_.begin();
   }
   return *currIter;
 }
@@ -42,6 +42,6 @@ Game& GameList::previous() {
    currIter = games_.end();
   }
   currIter--;
-  
+
   return *currIter;
 }

@@ -2,6 +2,7 @@
 // One day, there will be some code here.
 //
 #include <iostream>
+#include <unistd.h>
 using namespace std;
 
 #include "GameList.hpp"
@@ -23,6 +24,7 @@ int main(int argc, char* argv[]) {
   q1.texture("./share/cabrio_logo.png");
 
   renderer->init();
+  renderer->quads.push_back(q1);
 
   list->add(g1);
   list->add(g2);
@@ -35,6 +37,11 @@ int main(int argc, char* argv[]) {
   cout << list->first().name() << endl;
   cout << list->previous().name() << endl;
   cout << list->previous().name() << endl;
+
+  while(true) {
+    renderer->draw_all();
+    usleep(40);
+  }
 
   return 0;
 }

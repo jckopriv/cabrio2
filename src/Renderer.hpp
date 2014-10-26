@@ -13,11 +13,12 @@ class Renderer {
     Renderer();
     ~Renderer();
 
-    void add_quad(Quad& q);
-
     virtual int init() = 0;
-  private:
+    virtual int draw_all() = 0;
+
     std::vector<Quad> quads;
+
+  private:
 };
 
 #endif
