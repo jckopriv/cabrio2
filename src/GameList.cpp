@@ -3,12 +3,23 @@
 //
 #include "GameList.hpp"
 
+GameList::GameList()
+{
+
+}
+
+GameList::~GameList()
+{
+
+}
+
+
 void GameList::add(Game& g) {
-  games.push_back(g);
+  games_.push_back(g);
 }
 
 void GameList::reset() {
-  position = 0;
+  currIter = games_.begin();
 }
 
 Game& GameList::first() {
@@ -17,22 +28,20 @@ Game& GameList::first() {
 }
 
 Game& GameList::next() {
-  position++;
+  currIter++;
 
-  if ( position > games.size() - 1 ) {
-    this->reset();
+  if(currIter == games_.end()){
+    currIter = games_.begin(); 
   }
-
-  return games.at(position);
+  return *currIter;
 }
 
 Game& GameList::previous() {
-  if ( position == 0 ) {
-    position = games.size() - 1;
-  }
-  else {
-    position--;
-  }
 
-  return games.at(position);
+  if(currIter == games_.begin()){
+   currIter = games_.end();
+  }
+  currIter--;
+  
+  return *currIter;
 }
