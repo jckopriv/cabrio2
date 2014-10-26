@@ -7,14 +7,14 @@
 #include <vector>
 
 #include "Game.hpp"
+#include "Singleton.hpp"
 
-class GameList {
+class GameList : public Singleton<GameList> {
+  friend class Singleton<GameList>;
+  
   public:
-    static GameList& get_instance() {
-      static GameList instance;
-      return instance;
-    }
-
+    ~GameList();
+    
     void add(Game& g);
     void reset();
     Game& first();
@@ -22,12 +22,13 @@ class GameList {
     Game& previous();
 
   private:
-    GameList() {};
-    GameList(GameList const&);
-    void operator=(GameList const&);
+    GameList();
 
-    std::vector<Game> games;
-    size_t position;
+//    GameList(GameList& const);
+//    operator=(GameList& const);
+
+    std::vector<Game> games_;
+    std::vector<Game>::iterator currIter;
 };
 
 #endif

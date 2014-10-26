@@ -4,7 +4,7 @@
 
 CC=g++
 LD=$(CC)
-CPPFLAGS=-g -Wall
+CPPFLAGS=-g -Wall -std=c++11
 LDFLAGS=-L/usr/local/lib -lGLEW -lglfw3 -lSDL2 -lSDL2_image
 INCLUDES=-I./src -I./include -I/usr/local/include/SDL2
 
