@@ -4,7 +4,7 @@
 
 CC=g++
 LD=$(CC)
-CPPFLAGS=-g -Wall
+CPPFLAGS=-g -Wall -std=c++11
 #LDFLAGS=-lGL -lSDL -lSDL_image -lSDL_gfx 
 INCLUDES=-I./src -I./include
 
