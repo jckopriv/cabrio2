@@ -7,10 +7,12 @@ using namespace std;
 #include "GameList.hpp"
 #include "Quad.hpp"
 #include "Logger.hpp"
+#include "RendererOpenGL.hpp"
 
 int main(int argc, char* argv[]) {
   GameList& list = GameList::get_instance();
   Logger& logger = Logger::get_instance();
+  Renderer* renderer = new RendererOpenGL();
 
   logger.level(LOG_DEBUG);
   logger.log(LOG_INFO, "Starting up");
@@ -19,6 +21,8 @@ int main(int argc, char* argv[]) {
   Game g2("Goodbye");
   Quad q1;
   q1.texture("./share/cabrio_logo.png");
+
+  renderer->init();
 
   list.add(g1);
   list.add(g2);

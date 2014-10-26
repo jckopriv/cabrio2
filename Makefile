@@ -5,7 +5,7 @@
 CC=g++
 LD=$(CC)
 CPPFLAGS=-g -Wall
-LDFLAGS=-L/usr/local/lib -lSDL2 -lSDL2_image
+LDFLAGS=-L/usr/local/lib -lGLEW -lglfw3 -lSDL2 -lSDL2_image
 INCLUDES=-I./src -I./include -I/usr/local/include/SDL2
 
 INSTALL=/usr/bin/install -c

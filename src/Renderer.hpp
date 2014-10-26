@@ -15,8 +15,9 @@ class Renderer {
 
     void add_quad(Quad& q);
 
-    virtual void init() = 0;
+    virtual int init() = 0;
   private:
+    std::vector<Quad> quads;
 };
 
 #endif

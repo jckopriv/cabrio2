@@ -14,7 +14,6 @@ class Quad {
     Quad(std::string path);
     ~Quad();
 
-
     float x;
     float y;
     float z;
