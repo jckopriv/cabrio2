@@ -14,11 +14,13 @@
 
 using namespace std;
 
+// Vertices of two triangles, which together make a quad.
 static const GLfloat g_vertex_quad[] = {
+  // Bottom-left
   -1.0f,  1.0f, 0.0f,
   -1.0f, -1.0f, 0.0f,
    1.0f, -1.0f, 0.0f,
-
+  // Top-right
    1.0f, -1.0f, 0.0f,
    1.0f,  1.0f, 0.0f,
   -1.0f,  1.0f, 0.0f,
@@ -154,31 +156,37 @@ int RendererOpenGL::init() {
 }
 
 int RendererOpenGL::draw_all() {
-  std::vector<Quad>::iterator i;
+  std::vector<Quad>::iterator q;
 
-  i = this->quads.begin();
+  q = this->quads.begin();
 
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
   glUseProgram(program_id);
 
-  while (i != this->quads.end()) {
+  // Projection matrix : 45° Field of View, 4:3 ratio, display range : 0.1 unit <-> 100 units
+  glm::mat4 Projection = glm::perspective(45.0f, 4.0f / 3.0f, 0.1f, 100.0f);
 
-    // Projection matrix : 45° Field of View, 4:3 ratio, display range : 0.1 unit <-> 100 units
-    glm::mat4 Projection = glm::perspective(45.0f, 4.0f / 3.0f, 0.1f, 100.0f);
-    // Camera matrix
-    glm::mat4 View       = glm::lookAt(
-      glm::vec3(4,3,3), // Camera is at (4,3,3), in World Space
-      glm::vec3(0,0,0), // and looks at the origin
-      glm::vec3(0,1,0)  // Head is up (set to 0,-1,0 to look upside-down)
-    );
+  // Camera matrix
+  glm::mat4 View = glm::lookAt(
+    glm::vec3(0,0,10), // Camera is at (0,0,10), in World Space
+    glm::vec3(0,0,0),  // and looks at the origin
+    glm::vec3(0,1,0)   // Head is up (set to 0,-1,0 to look upside-down)
+  );
 
+  while (q != this->quads.end()) {
     // Model matrix : an identity matrix (model will be at the origin)
-    glm::mat4 Model      = glm::mat4(1.0f);  // Changes for each model !
+    glm::mat4 Model = glm::mat4(1.0f);  // Changes for each model !
+
+    Model = glm::scale(Model, glm::vec3(q->size_x, q->size_y, 1.0f));
+    Model = glm::rotate(Model, q->rotation_x, glm::vec3(1, 0, 0));
+    Model = glm::rotate(Model, q->rotation_y, glm::vec3(0, 1, 0));
+    Model = glm::rotate(Model, q->rotation_z, glm::vec3(0, 0, 1));
+    Model = glm::translate(Model, glm::vec3(q->x, q->y, q->z));
+
     // Our ModelViewProjection : multiplication of our 3 matrices
-    glm::mat4 MVP        = Projection * View * Model; // Remember, matrix multiplication is the other way around
+    glm::mat4 MVP = Projection * View * Model;
 
     glUniformMatrix4fv(matrix_id, 1, GL_FALSE, &MVP[0][0]);
-
 
     GLuint vertexbuffer;
     glGenBuffers(1, &vertexbuffer);
@@ -199,7 +207,7 @@ int RendererOpenGL::draw_all() {
     glDrawArrays(GL_TRIANGLES, 0, 6);
     glDisableVertexAttribArray(0);
 
-    i++;
+    q++;
   }
 
   glfwSwapBuffers(window);

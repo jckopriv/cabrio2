@@ -5,6 +5,8 @@
 
 Quad::Quad() {
   image = NULL;
+  this->size_x = 1.0f;
+  this->size_y = 1.0f;
 }
 
 Quad::~Quad() {

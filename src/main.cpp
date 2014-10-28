@@ -22,6 +22,8 @@ int main(int argc, char* argv[]) {
   Game g2("Goodbye");
   Quad q1;
   q1.texture("./share/cabrio_logo.png");
+  q1.size_x = 3;
+  q1.size_y = 1;
 
   renderer->init();
   renderer->quads.push_back(q1);
@@ -38,9 +40,23 @@ int main(int argc, char* argv[]) {
   cout << list->previous().name() << endl;
   cout << list->previous().name() << endl;
 
+  float offset = 0.01f;
+
   while(true) {
+    renderer->quads.at(0).x += offset * 10.0f;
+    renderer->quads.at(0).y += offset * 4.0f;
+    renderer->quads.at(0).z += offset;
+
+    if ( renderer->quads.at(0).x > 5.0 || renderer->quads.at(0).x < -5.0 ) {
+      offset = -offset;
+    }
+
+    renderer->quads.at(0).rotation_x += 1.0f;
+    renderer->quads.at(0).rotation_y += 1.0f;
+    renderer->quads.at(0).rotation_z += 1.0f;
+
     renderer->draw_all();
-    usleep(40);
+    usleep(40000);
   }
 
   return 0;
