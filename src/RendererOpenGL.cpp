@@ -16,9 +16,12 @@ using namespace std;
 
 static const GLfloat g_vertex_quad[] = {
   -1.0f,  1.0f, 0.0f,
-   1.0f,  1.0f, 0.0f,
-   1.0f, -1.0f, 0.0f,
   -1.0f, -1.0f, 0.0f,
+   1.0f, -1.0f, 0.0f,
+
+   1.0f, -1.0f, 0.0f,
+   1.0f,  1.0f, 0.0f,
+  -1.0f,  1.0f, 0.0f,
 };
 
 
@@ -193,7 +196,7 @@ int RendererOpenGL::draw_all() {
        (void*)0            // array buffer offset
     );
 
-    glDrawArrays(GL_TRIANGLES, 0, 3);
+    glDrawArrays(GL_TRIANGLES, 0, 6);
     glDisableVertexAttribArray(0);
 
     i++;
