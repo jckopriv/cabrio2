@@ -17,6 +17,8 @@ class RendererOpenGL : public Renderer {
     int draw_all();
   private:
     GLFWwindow* window;
+    GLuint program_id;
+    GLuint matrix_id;
 };
 
 #endif
