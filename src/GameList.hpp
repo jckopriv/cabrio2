@@ -11,10 +11,10 @@
 
 class GameList : public Singleton<GameList> {
   friend class Singleton<GameList>;
-  
+
   public:
     ~GameList();
-    
+
     void add(Game& g);
     void reset();
     Game& first();
