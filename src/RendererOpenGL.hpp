@@ -4,6 +4,7 @@
 #ifndef CABRIO_RENDEREROPENGL_HPP_
 #define CABRIO_RENDEREROPENGL_HPP_
 
+
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 
@@ -15,6 +16,8 @@ class RendererOpenGL : public Renderer {
     ~RendererOpenGL();
     int init();
     int draw_all();
+    int set_platform(Platform *p); //This will probably change. Intended to be Skin (background)
+    int set_gamelist(GameList *gl);
   private:
     GLFWwindow* window;
     GLuint program_id;

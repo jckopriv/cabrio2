@@ -1,5 +1,6 @@
 //
 // A quad (4-sided polygon) to display on screen.
+// This is the graphical primitive for individual imagery to be displayed for each game or background.
 //
 #ifndef CABRIO_QUAD_HPP_
 #define CABRIO_QUAD_HPP_

@@ -45,3 +45,20 @@ Game& GameList::previous() {
 
   return *currIter;
 }
+
+Game& GameList::current(){
+  return *currIter;
+}
+
+
+
+std::vector<Game>* GameList::getRange(int count){
+ std::vector<Game>* ret;
+
+ // TODO: Handle wrapping around the boundaries of the games vector.
+
+  //iterator can handle ++/-- as well as +n and -n.
+   // this should return 'count' games both before and after Current
+ 
+ return ret; 
+}

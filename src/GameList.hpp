@@ -20,6 +20,8 @@ class GameList : public Singleton<GameList> {
     Game& first();
     Game& next();
     Game& previous();
+    Game& current();
+    std::vector<Game>* getRange(int count);
 
   private:
     GameList();

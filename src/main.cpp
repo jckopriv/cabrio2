@@ -26,7 +26,7 @@ int main(int argc, char* argv[]) {
   q1.size_y = 1;
 
   renderer->init();
-  renderer->quads.push_back(q1);
+  //renderer->quads_.push_back(q1);
 
   list->add(g1);
   list->add(g2);
@@ -42,22 +42,23 @@ int main(int argc, char* argv[]) {
 
   float offset = 0.01f;
 
+  /*
   while(true) {
-    renderer->quads.at(0).x += offset * 10.0f;
-    renderer->quads.at(0).y += offset * 4.0f;
-    renderer->quads.at(0).z += offset;
+    renderer->quads_.at(0).x += offset * 10.0f;
+    renderer->quads_.at(0).y += offset * 4.0f;
+    renderer->quads_.at(0).z += offset;
 
-    if ( renderer->quads.at(0).x > 5.0 || renderer->quads.at(0).x < -5.0 ) {
+    if ( renderer->quads_.at(0).x > 5.0 || renderer->quads_.at(0).x < -5.0 ) {
       offset = -offset;
     }
 
-    renderer->quads.at(0).rotation_x += 1.0f;
-    renderer->quads.at(0).rotation_y += 1.0f;
-    renderer->quads.at(0).rotation_z += 1.0f;
+    renderer->quads_.at(0).rotation_x += 1.0f;
+    renderer->quads_.at(0).rotation_y += 1.0f;
+    renderer->quads_.at(0).rotation_z += 1.0f;
 
     renderer->draw_all();
     usleep(40000);
   }
-
+*/
   return 0;
 }
