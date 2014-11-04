@@ -12,6 +12,7 @@
 #include "Singleton.hpp"
 #include "CabrioDataTypes.hpp"
 
+class LayoutBase;
 class Renderer : Singleton<Renderer> {
   friend class Singleton<Renderer>;
   public:
@@ -20,11 +21,13 @@ class Renderer : Singleton<Renderer> {
 
     virtual int init() = 0;
     virtual int draw_all() = 0;
-    int set_platform(Platform *p); //This will probably change. Intended to be Skin (background)
-    int set_gamelist(GameList *gl);
+    
+    // Quad handling should reside solely in the layout.
+    // the renderer only takes in a quad list and displays it.
+    int set_quads(vector<Quad> q);
+
 
   protected:
-    int get_quads();
     
     std::vector<Quad> quads_;
     GameList *currGameList_;

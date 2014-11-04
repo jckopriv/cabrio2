@@ -14,6 +14,7 @@ public:
     
     LayoutGrid(std::string params);
     
+    //TODO: Implement a grid structure
     bool CreateScreen(Renderer* r, GameList* gl);
     
 };

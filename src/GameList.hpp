@@ -26,8 +26,6 @@ class GameList : public Singleton<GameList> {
   private:
     GameList();
 
-//    GameList(GameList& const);
-//    operator=(GameList& const);
 
     std::vector<Game> games_;
     std::vector<Game>::iterator currIter;

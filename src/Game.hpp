@@ -6,8 +6,11 @@
 
 #include <string>
 
+#include "CabrioDataTypes.hpp"
 #include "Platform.hpp"
 #include "QuadMap.hpp"
+
+class Quad;
 
 class Game {
   public:
@@ -15,10 +18,13 @@ class Game {
     Game(std::string name);
     ~Game();
 
-    Platform& platform();
+    Platform* platform();
     std::string name();
-    void name(std::string n);
+    void getName(std::string n);
+    Quad* getImageByTpe(ImgType it);
 
+    bool operator==(const Game& g);
+    
   private:
     std::string str_name_;
     Platform *plat_;
